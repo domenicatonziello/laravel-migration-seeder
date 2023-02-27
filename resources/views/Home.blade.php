@@ -1,23 +1,23 @@
 @extends('layouts.main')
 
 @section('content')
-<ul>
-    @foreach ($trains as $train)
-        <li>
-            <ul>
-                <li>{{$train->azienda}}</li>
-                <li>{{$train->stazione_partenza}}</li>
-                <li>{{$train->stazione_arrivo}}</li>
-                <li>{{$train->data_partenza}}</li>
-                <li>{{$train->orario_partenza}}</li>
-                <li>{{$train->orario_arrivo}}</li>
-                <li>{{$train->codice_treno}}</li>
-                <li>{{$train->n_carrozze}}</li>
-                <li>{{$train->in_orario}}</li>
-                <li>{{$train->cancellato}}</li>
-            </ul>
-        </li>
-    @endforeach
-</ul>
-    
+    <main class="container">
+        <div class="row">
+            @foreach ($trains as $train)
+                <div class="col-6 my-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Data Partenza: {{$train->data_partenza}} </h5>
+                            <h6 class="card-subtitle mb-2 text-muted"> Numero Carrozze: {{$train->n_carrozze}}</h6>
+                            <p class="card-text"> <strong>Partenza: </strong> {{$train->stazione_partenza}} <strong> Arrivo: </strong> {{$train->stazione_arrivo}} </p>
+                            <p class="card-text">Orario Partenza: {{$train->orario_partenza}} </p>
+                            <p class="card-text">Orario Arrivo: {{$train->orario_partenza}} </p>
+                            <p class="card-text">In Orario: {{$train->in_orario}} || Cancellato: {{$train->cancellato}} </p>
+                            <a href="#" class="card-link"> Azienda: {{$train->azienda}} </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>  
+    </main>
 @endsection
