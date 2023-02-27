@@ -8,7 +8,7 @@
     @yield('cdns')
 </head>
 <body>
-    <header></header>
+    <h1>Orari Treni</h1>
     <main>
         @yield('content') 
     </main>
