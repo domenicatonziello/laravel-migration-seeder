@@ -12,20 +12,19 @@ class TrainSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
         $trains = new Train();
-        $trains->data_attuale = '2023 - 02 - 27';
-        $trains->data_partenza = '2023 - 02 - 28';
-        $trains->azienda = 'Trenitalia';
-        $trains->stazione_partenza = 'Roma';
-        $trains->stazione_arrivo = 'Milano';
-        $trains->orario_partenza = '15:23';
-        $trains->orario_arrivo = '20:03';
-        $trains->codice_treno = 'ASBIFBNSSFF';
-        $trains->n_carrozze = 13;
-        $trains->in_orario = true;
-        $trains->cancellato = false;
+        $trains->azienda = $faker->company();
+        $trains->stazione_partenza = $faker->city();
+        $trains->stazione_arrivo = $faker->city();
+        $trains->data_partenza = $faker->date();
+        $trains->orario_partenza = $faker->time();
+        $trains->orario_arrivo = $faker->time();
+        $trains->codice_treno = $faker->md5();
+        $trains->n_carrozze = $faker->randomDigitNotNull();
+        $trains->in_orario = $faker->boolean();
+        $trains->cancellato = $faker->boolean();
         $trains->save();
     }
 }
